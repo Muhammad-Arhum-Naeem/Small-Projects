@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Flip Example</title>
+  <style>
+    /* Card container styles */
+    .card-container {
+      perspective: 1000px;
+      width: 300px;
+      height: 400px;
+      position: relative;
+      margin: 50px auto;
+    }
+
+    /* Card styles */
+    .card {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    /* Card front and back styles */
+    .card .front,
+    .card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    /* Card front styles */
+    .card .front {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    /* Card back styles */
+    .card .back {
+      background-color: #e74c3c;
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    /* Input field styles */
+    .card .back input {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 80%;
+      font-size: 16px;
+    }
+
+    /* Button styles */
+    .card .front button,
+    .card .back button {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card-container">
+  <div class="card" id="card">
+    <div class="front">
+      <p>Front</p>
+      <button onclick="flipCard()">Flip</button>
+    </div>
+    <div class="back">
+      <input type="text" placeholder="Name">
+      <input type="text" placeholder="Class">
+      <input type="text" placeholder="Marks">
+      <button onclick="flipCard()">Flip</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Function to flip the card
+  function flipCard() {
+    var card = document.getElementById('card');
+    card.style.transform = card.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+  }
+</script>
+
+</body>
+</html>
